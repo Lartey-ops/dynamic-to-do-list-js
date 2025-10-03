@@ -7,7 +7,9 @@ document.addEventListener('DOMContentLoaded', function () {
     function addTask() {
         const taskText = taskInput.value.trim();
 
-        if (taskText !== "") {
+        if (taskText === "") {
+            alert("Please enter a task."); // Required alert
+        } else {
             // Create <li> for the task
             const li = document.createElement('li');
             li.textContent = taskText;
@@ -15,14 +17,13 @@ document.addEventListener('DOMContentLoaded', function () {
             // Create Remove button
             const removeBtn = document.createElement('button');
             removeBtn.textContent = "Remove";
-            removeBtn.className = "remove-btn"; // no classList.add used
+            removeBtn.className = "remove-btn";
 
-            // When clicked, remove the task
+            // Remove task on click
             removeBtn.onclick = function () {
                 taskList.removeChild(li);
             };
 
-            // Put button inside li, then add li to task list
             li.appendChild(removeBtn);
             taskList.appendChild(li);
 
